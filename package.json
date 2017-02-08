@@ -18,6 +18,7 @@
     "morgan": "^1.7.0",
     "node-sass": "^4.3.0",
     "npm-run-all": "^4.0.0",
+    "path": "^0.12.7",
     "postcss-loader": "^1.2.2",
     "rimraf": "^2.5.4",
     "sass-loader": "^4.1.1",
@@ -31,7 +32,12 @@
     "url": "git+https://github.com/mikeqcp/webpack-exercise-apptension.git"
   },
   "scripts": {
-    "start": "webpack-dev-server --open"
+    "serve": "webpack-dev-server --open",
+    "build prod": "npm-run-all clean-dist webpack:prod",
+    "build stage": "npm-run-all clean-dist webpack:dev",
+    "webpack:prod": "webpack --config webpack.prod.js",
+    "webpack:stage": "webpack --config webpack.dev.js",
+    "clean-dist": "rimraf ./dist/*"
   },
   "author": "Apptension"
 }

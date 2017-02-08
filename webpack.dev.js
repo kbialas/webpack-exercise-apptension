@@ -4,7 +4,8 @@ var path = require('path');
 
 module.exports = {
   entry: {
-    'main': './src/main.js'
+    'main': './src/main.js',
+    'unsupported': './src/unsupported.js'
   },
   output: {
     path: path.join(__dirname, '/dist/'),
