@@ -2,6 +2,8 @@
 var webpack = require("webpack");
 var path = require('path');
 
+var extractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports = {
   entry: {
     'main': './src/main.js',
@@ -22,10 +24,12 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loaders: ["style-loader", "css-loader", 'postcss-loader', "sass-loader"]
+        loaders: extractTextPlugin.extract('css!sass?modules=true!postcss')
       }
     ]
 
   },
-  plugins: []
+  plugins: [
+    new extractTextPlugin('style-[hash].css')
+  ]
 };
